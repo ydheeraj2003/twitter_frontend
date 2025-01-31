@@ -4,15 +4,19 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: '/twitter_frontend/',
   server : {
     port : 5000,
     proxy: {
       "/api" : {
-        target : "http://localhost:8000",
+        target : "https://twitter-backend-61fc.onrender.com",
         changeOrigin : true
       }
     }
   },
+})
+
+{/* 
   build: {
     // Ensure your API calls are redirected to the live backend during production build
     define: {
@@ -21,4 +25,6 @@ export default defineConfig({
         : 'http://localhost:8000', // Local backend URL for development
     },
   },
-})
+  
+  
+  */}
