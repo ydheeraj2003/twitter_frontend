@@ -8,9 +8,17 @@ export default defineConfig({
     port : 5000,
     proxy: {
       "/api" : {
-        target : "https://twitter-backend-61fc.onrender.com/",
+        target : "http://localhost:8000",
         changeOrigin : true
       }
     }
-  }
+  },
+  build: {
+    // Ensure your API calls are redirected to the live backend during production build
+    define: {
+      'process.env.VITE_API_URL': process.env.NODE_ENV === 'production'
+        ? 'https://twitter-backend-61fc.onrender.com' // Live backend URL for production
+        : 'http://localhost:8000', // Local backend URL for development
+    },
+  },
 })
