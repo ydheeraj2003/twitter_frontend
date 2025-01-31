@@ -10,7 +10,8 @@ export default defineConfig({
     proxy: {
       "/api" : {
         target : "https://twitter-backend-61fc.onrender.com",
-        changeOrigin : true
+        changeOrigin : true,
+        secure: true
       }
     }
   },
